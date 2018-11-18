@@ -1,0 +1,25 @@
+plugins {
+	id 'com.github.johnrengelman.shadow' version '2.0.1'
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'ohtu.Main'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'ohtu.Main'
+    }
+}
+
+//ei tunnistanu repostories, koska se oli eka buildscript sulkeiden sisällä
+repositories {
+  jcenter()
+}
+
+dependencies { //jos sanoo vaan error rootissa, niin tod näk blockit on väärin
+  compile group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.6'
+  //implementation 'org.apache.httpcomponents:httpclient:4.5.6'
+  implementation 'com.google.code.gson:gson:2.8.5'
+}
